@@ -672,6 +672,7 @@ class SubscriptionRequest(object):
         content_element = ET.SubElement(subscription_element, 'content')
         content_element.attrib['id'] = subscription_item.target.id
         content_element.attrib['type'] = subscription_item.target.type
+        content_element.attrib['sendIfViewEmpty'] = subscription_item.send_if_view_empty
 
         schedule_element = ET.SubElement(subscription_element, 'schedule')
         schedule_element.attrib['id'] = subscription_item.schedule_id
