@@ -73,6 +73,7 @@ class RequestOptions(RequestOptionsBase):
     >>> request_options.filter.add(TSC.Filter(TSC.RequestOptions.Field.Tags, TSC.Filter.Operator.Equals, "important"))
 
     """
+
     def __init__(self, pagenumber=1, pagesize=None):
         self.pagenumber = pagenumber
         self.pagesize = pagesize or config.PAGE_SIZE
@@ -302,6 +303,7 @@ class CSVRequestOptions(_DataExportOptions):
     >>> with open("output.csv", "wb") as f:
     >>>     for chunk in view_item.csv():
     """
+
     extension = "csv"
 
 
@@ -326,6 +328,7 @@ class ExcelRequestOptions(_DataExportOptions):
     >>> with open("output.csv", "wb") as f:
     >>>     for chunk in view_item.csv():
     """
+
     extension = "xlsx"
 
 
@@ -356,6 +359,7 @@ class ImageRequestOptions(_DataExportOptions):
     >>> with open("output.png", "wb") as f:
     >>>     f.write(view_item.image)
     """
+
     extension = "png"
 
     # if 'high' isn't specified, the REST API endpoint returns an image with standard resolution
