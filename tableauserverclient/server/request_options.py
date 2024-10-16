@@ -55,23 +55,6 @@ class RequestOptions(RequestOptionsBase):
     pagesize: int, optional
         The number of items to return per page. Default is 100. Can also read
         from the environment variable `TSC_PAGE_SIZE`
-
-    Examples
-    --------
-    >>> # Get the first 50 workbooks on the site
-    >>> request_options = TSC.RequestOptions(pagesize=50)
-
-    >>> # Get the next 50 workbooks on the site
-    >>> request_options.page_number(2)
-
-    >>> # Get the first 50 workbooks on the site, sorted by name
-    >>> request_options = TSC.RequestOptions(pagesize=50)
-    >>> request_options.sort.add(TSC.Sort(TSC.RequestOptions.Field.Name, TSC.Sort.Direction.Asc))
-
-    >>> # Get the first 50 workbooks on the site, filtered by a tag
-    >>> request_options = TSC.RequestOptions(pagesize=50)
-    >>> request_options.filter.add(TSC.Filter(TSC.RequestOptions.Field.Tags, TSC.Filter.Operator.Equals, "important"))
-
     """
 
     def __init__(self, pagenumber=1, pagesize=None):
@@ -293,15 +276,6 @@ class CSVRequestOptions(_DataExportOptions):
     maxage: int, optional
         The maximum age of the data to export. Shortest possible duration is 1
         minute. No upper limit. Default is -1, which means no limit.
-
-    Examples
-    --------
-    >>> # Export the view to CSV
-    >>> request_options = TSC.CSVRequestOptions()
-    >>> request_options.vf("Region", "West")
-    >>> server.views.populate_csv(view_item, request_options)
-    >>> with open("output.csv", "wb") as f:
-    >>>     for chunk in view_item.csv():
     """
 
     extension = "csv"
@@ -318,15 +292,6 @@ class ExcelRequestOptions(_DataExportOptions):
     maxage: int, optional
         The maximum age of the data to export. Shortest possible duration is 1
         minute. No upper limit. Default is -1, which means no limit.
-
-    Examples
-    --------
-    >>> # Export the view to CSV
-    >>> request_options = TSC.CSVRequestOptions()
-    >>> request_options.vf("Region", "West")
-    >>> server.views.populate_csv(view_item, request_options)
-    >>> with open("output.csv", "wb") as f:
-    >>>     for chunk in view_item.csv():
     """
 
     extension = "xlsx"
@@ -349,15 +314,6 @@ class ImageRequestOptions(_DataExportOptions):
     maxage: int, optional
         The maximum age of the data to export. Shortest possible duration is 1
         minute. No upper limit. Default is -1, which means no limit.
-
-    Examples
-    --------
-    >>> # Export the view to an image
-    >>> request_options = TSC.ImageRequestOptions()
-    >>> request_options.vf("Region", "West")
-    >>> server.views.populate_image(view_item, request_options)
-    >>> with open("output.png", "wb") as f:
-    >>>     f.write(view_item.image)
     """
 
     extension = "png"
@@ -400,15 +356,6 @@ class PDFRequestOptions(_DataExportOptions):
 
     viz_width: int, optional
         The width of the viz in pixels. If specified, viz_height must also be specified.
-
-    Examples
-    --------
-    >>> # Export the view to a pdf
-    >>> request_options = TSC.PDFRequestOptions()
-    >>> request_options.vf("Region", "West")
-    >>> server.views.populate_pdf(view_item, request_options)
-    >>> with open("output.pdf", "wb") as f:
-    >>>     f.write(view_item.pdf)
     """
 
     class PageType:
